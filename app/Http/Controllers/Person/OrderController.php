@@ -1,0 +1,16 @@
+<?php
+
+namespace App\Http\Controllers\Person;
+
+use App\Http\Controllers\Controller;
+use App\Order;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+class OrderController extends Controller
+{
+    public function index() {
+        $orders = Auth::user()->orders()->get();
+        return view('person.orders', ['orders' => $orders]);
+    }
+}
